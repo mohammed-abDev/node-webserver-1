@@ -21,3 +21,32 @@ randomNumServer.listen(1234,(err) =>{
         console.log("Server running at http://localhost:1234");
     }
 });
+
+//***********Express*****************/
+const express = require("express");
+const randomNumber = require("./randomNumber.js");
+
+const app = express();
+
+app.get("/", (req, res) => {
+    const result = randomNumber.random();
+    console.log(`Random number sent: ${result}`);
+
+    res.send(`
+    <html>
+        <body style="font-family: Arial; text-align: center; margin-top: 100px;">
+            <h1>Random Number</h1>
+            <h2 style="border-bottom: 2px solid red;">${result}</h2>
+        </body>
+    </html>
+    `);
+});
+
+app.listen(1234, (err) => {
+  if (err) {
+    console.error("Server failed to start:", err);
+  } else {
+    console.log(`Server running at http://localhost:1234`);
+  }
+});
+
