@@ -16,4 +16,25 @@ server.listen(1234, (err) => {
     }
 });
 
+//*********EXPRESS*********/
+//?A
+const express = require("express");
+//?B C
+const app = express();
+
+app.get("/", (req, res) => {
+    res.status(200).send("Request received and processed");
+    console.log("Response successfully sent!");
+});
+
+app.listen(1234, (err) => {
+    if (err) {
+        console.error("Server failed to start:", err);
+    }else {
+        console.log("Server running at http://localhost:1234");
+    }
+});
+
+
+
 
